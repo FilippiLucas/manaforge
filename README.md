@@ -5,7 +5,7 @@ Este projeto tem como objetivo a criação de um Deck Builder para Magic: The Ga
 O frontend da aplicação será desenvolvido com HTML, CSS e JavaScript.
 
 ## Design das Telas - Figma: 
-Link para o Figma: [](https://www.figma.com/design/QHUP8EZnFYWWXtORWATXGi/ManaForge?node-id=0-1&t=yE48bB8JRb1I7Pi3-1)
+Link para o Figma: https://www.figma.com/design/QHUP8EZnFYWWXtORWATXGi/ManaForge?node-id=0-1&t=yE48bB8JRb1I7Pi3-1
 
 ## Design System: 
 Link para o PDF: "A implementar..."
