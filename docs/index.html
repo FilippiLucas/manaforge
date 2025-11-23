@@ -6,20 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - ManaForge</title>
 
-    <link href="tailwind.css" rel="stylesheet">
+    <link href="./styles/tailwind.css" rel="stylesheet">
 </head>
 
 <body class="bg-gray-900 ">
 
     <nav class="bg-gray-800">
         <div class="max-w-6xl mx-auto px-4">
-            <!-- hidden checkbox must come BEFORE the panel that uses peer-checked -->
             <input id="nav-toggle" type="checkbox" class="hidden peer" />
 
             <div class="flex items-center justify-between h-[70px]">
                 <!-- logo -->
                 <div class="flex items-center space-x-2">
-                    <img src="../src/img/logo.png" width="50" alt="logo">
+                    <img src="https://res.cloudinary.com/dqnrpauzk/image/upload/v1763919969/logo_ljidep.png" width="50" alt="logo">
                 </div>
 
                 <!-- desktop links -->
@@ -36,7 +35,6 @@
 
                 <!-- mobile hamburger -->
                 <label for="nav-toggle" class="md:hidden p-2 rounded-md text-gray-200 hover:bg-gray-700 cursor-pointer">
-                    <!-- simple hamburger icon -->
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"
                         xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -44,7 +42,6 @@
                 </label>
             </div>
 
-            <!-- mobile panel: appears when checkbox is checked -->
             <div class="hidden peer-checked:flex md:hidden flex-col gap-2 py-2">
                 <a href="index.html" class="px-3 py-2 text-gray-200 hover:bg-gray-700 rounded">Home</a>
                 <a href="cards.html" class="px-3 py-2 text-gray-200 hover:bg-gray-700 rounded">Cards</a>
@@ -56,8 +53,7 @@
 
     <main class="w-7/8 mx-auto h-full flex flex-col mt-5">
 
-        <!-- Filters: full for md+; compact + expandable horizontal overflow for small screens -->
-        <!-- Desktop / tablet (md and up) -->
+        <!-- Desktop / tablet Filters -->
         <section class="hidden md:flex text-white justify-center items-start p-4 space-x-6 text-sm">
             <div class="flex flex-col gap-2">
                 <label for="search" class="text-white">Search</label>
@@ -121,10 +117,10 @@
             </div>
         </section>
 
-        <!-- Mobile: keep search + Filters button side-by-side; show filters below when toggled (no JS) -->
+        <!-- Mobile: Filters -->
         <section class="md:hidden w-full px-4 py-3">
             <div class="flex flex-col gap-2">
-                <!-- hidden checkbox MUST be a sibling of the panel for Tailwind's peer utilities to work -->
+
                 <input id="filters-toggle" type="checkbox" class="hidden peer" />
 
                 <div class="flex items-center gap-3">
@@ -195,7 +191,6 @@
                             </select>
                         </div>
 
-                        <!-- add more inline filter blocks as needed -->
                     </div>
                 </div>
             </div>
@@ -207,10 +202,10 @@
             <!-- Card 1 -->
             <div class="p-2 card">
                 <div class="relative group w-60 h-[360px] overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.02] cursor-pointer">
-                    <!-- per-card checkbox (peer) -->
+
                     <input id="show-1" type="checkbox" class="hidden peer" />
 
-                    <img src="../src/img/Chocobo.jpg" alt="" class="w-full h-full object-cover">
+                    <img src="https://res.cloudinary.com/dqnrpauzk/image/upload/v1763919969/Chocobo_gzexxc.jpg" alt="" class="w-full h-full object-cover">
 
                     <!-- overlay: hover (desktop) OR peer-checked (mobile/tap) -->
                     <div
@@ -227,7 +222,7 @@
             <div class="p-2 card">
                 <div class="relative group w-60 h-[360px] overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.02] cursor-pointer">
                     <input id="show-2" type="checkbox" class="hidden peer" />
-                    <img src="../src/img/Nicol.jpg" alt="" class="w-full h-full object-cover">
+                    <img src="https://res.cloudinary.com/dqnrpauzk/image/upload/v1763919969/Nicol_zwdpbu.jpg" alt="" class="w-full h-full object-cover">
                     <div
                         class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto peer-checked:opacity-100 peer-checked:pointer-events-auto">
                         <div class="relative z-30 flex gap-3">
@@ -242,7 +237,7 @@
             <div class="p-2 card">
                 <div class="relative group w-60 h-[360px] overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.02] cursor-pointer">
                     <input id="show-3" type="checkbox" class="hidden peer" />
-                    <img src="../src/img/Niv.jpg" alt="" class="w-full h-full object-cover">
+                    <img src="https://res.cloudinary.com/dqnrpauzk/image/upload/v1763919969/Niv_bygnih.jpg" alt="" class="w-full h-full object-cover">
                     <div
                         class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto peer-checked:opacity-100 peer-checked:pointer-events-auto">
                         <div class="relative z-30 flex gap-3">
@@ -257,7 +252,7 @@
             <div class="p-2 card">
                 <div class="relative group w-60 h-[360px] overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.02] cursor-pointer">
                     <input id="show-4" type="checkbox" class="hidden peer" />
-                    <img src="../src/img/Progenitus.jpg" alt="" class="w-full h-full object-cover">
+                    <img src="https://res.cloudinary.com/dqnrpauzk/image/upload/v1763919968/Progenitus_t8wmkc.jpg" alt="" class="w-full h-full object-cover">
                     <div
                         class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto peer-checked:opacity-100 peer-checked:pointer-events-auto">
                         <div class="relative z-30 flex gap-3">
@@ -272,7 +267,7 @@
             <div class="p-2 card">
                 <div class="relative group w-60 h-[360px] overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.02] cursor-pointer">
                     <input id="show-5" type="checkbox" class="hidden peer" />
-                    <img src="../src/img/Tiamat.jpg" alt="" class="w-full h-full object-cover">
+                    <img src="https://res.cloudinary.com/dqnrpauzk/image/upload/v1763919968/Tiamat_bpoo8u.jpg" alt="" class="w-full h-full object-cover">
                     <div
                         class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto peer-checked:opacity-100 peer-checked:pointer-events-auto">
                         <div class="relative z-30 flex gap-3">
@@ -287,7 +282,7 @@
             <div class="p-2 card">
                 <div class="relative group w-60 h-[360px] overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.02] cursor-pointer">
                     <input id="show-6" type="checkbox" class="hidden peer" />
-                    <img src="../src/img/Wurmcoil.jpg" alt="" class="w-full h-full object-cover">
+                    <img src="https://res.cloudinary.com/dqnrpauzk/image/upload/v1763919968/Wurmcoil_zcflid.jpg" alt="" class="w-full h-full object-cover">
                     <div
                         class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto peer-checked:opacity-100 peer-checked:pointer-events-auto">
                         <div class="relative z-30 flex gap-3">
@@ -302,7 +297,7 @@
             <div class="p-2 card">
                 <div class="relative group w-60 h-[360px] overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.02] cursor-pointer">
                     <input id="show-7" type="checkbox" class="hidden peer" />
-                    <img src="../src/img/Zoetic.jpg" alt="" class="w-full h-full object-cover">
+                    <img src="https://res.cloudinary.com/dqnrpauzk/image/upload/v1763919968/Zoetic_b2uh2o.jpg" alt="" class="w-full h-full object-cover">
                     <div
                         class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto peer-checked:opacity-100 peer-checked:pointer-events-auto">
                         <div class="relative z-30 flex gap-3">
@@ -317,7 +312,7 @@
             <div class="p-2 card">
                 <div class="relative group w-60 h-[360px] overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.02] cursor-pointer">
                     <input id="show-8" type="checkbox" class="hidden peer" />
-                    <img src="../src/img/Forest.jpg" alt="" class="w-full h-full object-cover">
+                    <img src="https://res.cloudinary.com/dqnrpauzk/image/upload/v1763919969/Forest_ptgcci.jpg" alt="" class="w-full h-full object-cover">
                     <div
                         class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto peer-checked:opacity-100 peer-checked:pointer-events-auto">
                         <div class="relative z-30 flex gap-3">
