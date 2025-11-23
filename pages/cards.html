@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - ManaForge</title>
+
+    <link rel="stylesheet" href="../src/styles/tailwind.css">
+</head>
+
+<body class="bg-gray-900 ">
+
+    <nav class="bg-gray-800">
+        <div class="max-w-6xl mx-auto px-4">
+            <!-- hidden checkbox must come BEFORE the panel that uses peer-checked -->
+            <input id="nav-toggle" type="checkbox" class="hidden peer" />
+
+            <div class="flex items-center justify-between h-[70px]">
+                <!-- logo -->
+                <div class="flex items-center space-x-2">
+                    <img src="../src/img/logo.png" width="50" alt="logo">
+                </div>
+
+                <!-- desktop links -->
+                <ul class="hidden md:flex space-x-4 text-gray-200 font-semibold">
+                    <li><a href="index.html" class="hover:text-white">Home</a></li>
+                    <li><a href="cards.html" class="hover:text-white">Cards</a></li>
+                    <li><a href="decks.html" class="hover:text-white">Decks</a></li>
+                </ul>
+
+                <!-- desktop auth -->
+                <div class="hidden md:flex">
+                    <a href="login.html" class="text-gray-200 font-semibold hover:text-white">Login</a>
+                </div>
+
+                <!-- mobile hamburger -->
+                <label for="nav-toggle" class="md:hidden p-2 rounded-md text-gray-200 hover:bg-gray-700 cursor-pointer">
+                    <!-- simple hamburger icon -->
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"
+                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </label>
+            </div>
+
+            <!-- mobile panel: appears when checkbox is checked -->
+            <div class="hidden peer-checked:flex md:hidden flex-col gap-2 py-2">
+                <a href="index.html" class="px-3 py-2 text-gray-200 hover:bg-gray-700 rounded">Home</a>
+                <a href="cards.html" class="px-3 py-2 text-gray-200 hover:bg-gray-700 rounded">Cards</a>
+                <a href="decks.html" class="px-3 py-2 text-gray-200 hover:bg-gray-700 rounded">Decks</a>
+                <a href="login.html" class="px-3 py-2 text-gray-200 hover:bg-gray-700 rounded">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="w-7/8 mx-auto h-full flex flex-col mt-5">
+
+        <!-- Filters: full for md+; compact + expandable horizontal overflow for small screens -->
+        <!-- Desktop / tablet (md and up) -->
+        <section class="hidden md:flex text-white justify-center items-start p-4 space-x-6 text-sm">
+            <div class="flex flex-col gap-2">
+                <label for="search" class="text-white">Search</label>
+
+                <div class="relative w-40">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="h-5 w-5 absolute left-2 top-1/2 -translate-y-1/2 text-gray-400">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                    </svg>
+                    <input type="text" id="search" name="search" placeholder="Search..."
+                        class="w-40 pl-9 pr-3 py-2 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none" />
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label for="">Color</label>
+                <select name="colors" class="w-40 px-3 py-2 rounded bg-gray-800">
+                    <option value="white">White</option>
+                    <option value="blue">Blue</option>
+                    <option value="black">Black</option>
+                    <option value="red">Red</option>
+                    <option value="green">Green</option>
+                    <option value="colorless">Colorless</option>
+                </select>
+            </div>
+            <div class="flex flex-col gap-2">
+                <label for="">Formats</label>
+                <select name="formats" class="w-40 px-3 py-2 rounded bg-gray-800">
+                    <option value="standard">Standard</option>
+                    <option value="future_standard">Future Standard</option>
+                    <option value="historic">Historic</option>
+                    <option value="timeless">Timeless</option>
+                    <option value="gladiator">Gladiatore</option>
+                    <option value="pioneer">Pioneer</option>
+                    <option value="modern">Modern</option>
+                    <option value="legacy">Legacy</option>
+                    <option value="pauper">Pauper</option>
+                    <option value="vintage">Vintage</option>
+
+                    <option value="commander">Commander</option>
+                    <option value="oathbreaker">Oathbreaker</option>
+                    <option value="standard_brawl">Standard Brawl</option>
+                    <option value="brawl">Brawl</option>
+                    <option value="alchemy">Alchemy</option>
+                    <option value="pauper_commander">Pauper Commander</option>
+                    <option value="duel_commander">Duel Commander</option>
+                    <option value="old_school">Old School 93/94</option>
+                    <option value="premodern">Premodern</option>
+                    <option value="predh">PreDH</option>
+                </select>
+            </div>
+            <div class="flex flex-col gap-2">
+                <label for="rarity">Rarity</label>
+                <select name="rarity" class="w-40 px-3 py-2 rounded bg-gray-800">
+                    <option value="common">Common</option>
+                    <option value="uncommon">Uncommon</option>
+                    <option value="rare">Rare</option>
+                    <option value="mythic">Mythic Rare</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Mobile: keep search + Filters button side-by-side; show filters below when toggled (no JS) -->
+        <section class="md:hidden w-full px-4 py-3">
+            <div class="flex flex-col gap-2">
+                <!-- hidden checkbox MUST be a sibling of the panel for Tailwind's peer utilities to work -->
+                <input id="filters-toggle" type="checkbox" class="hidden peer" />
+
+                <div class="flex items-center gap-3">
+                    <!-- Search -->
+                    <div class="relative flex-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor"
+                            class="h-5 w-5 absolute left-2 top-1/2 -translate-y-1/2 text-gray-400">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                        </svg>
+                        <input type="text" id="search-mobile" name="search" placeholder="Search..."
+                            class="w-full pl-9 pr-3 py-2 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none" />
+                    </div>
+
+                    <label for="filters-toggle"
+                        class="px-3 py-2 ml-2 bg-gray-800 text-white rounded-md cursor-pointer select-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+                        </svg>
+
+                    </label>
+                </div>
+
+                <!-- Filters panel: hidden by default; appears below when checkbox is checked -->
+                <div
+                    class="hidden peer-checked:flex w-full overflow-x-auto mt-2 [&::-webkit-scrollbar]:[height:4px] [&::-webkit-scrollbar-thumb]:bg-gray-400 overflow-y-auto [&::-webkit-scrollbar-thumb]:[border-radius:3px] max-h-80">
+                    <div class="inline-flex gap-3 p-2">
+                        <div class="flex flex-col gap-2">
+                            <label class="text-sm text-gray-200">Color</label>
+                            <select name="colors" class="w-40 px-3 py-2 rounded bg-gray-800 text-gray-200">
+                                <option value="white">White</option>
+                                <option value="blue">Blue</option>
+                                <option value="black">Black</option>
+                                <option value="red">Red</option>
+                                <option value="green">Green</option>
+                                <option value="colorless">Colorless</option>
+                            </select>
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <label class="text-sm text-gray-200">Formats</label>
+                            <select name="formats" class="w-40 px-3 py-2 rounded bg-gray-800 text-gray-200">
+                                <option value="standard">Standard</option>
+                                <option value="future_standard">Future Standard</option>
+                                <option value="historic">Historic</option>
+                                <option value="timeless">Timeless</option>
+                                <option value="gladiator">Gladiatore</option>
+                                <option value="pioneer">Pioneer</option>
+                                <option value="modern">Modern</option>
+                                <option value="legacy">Legacy</option>
+                                <option value="pauper">Pauper</option>
+                                <option value="vintage">Vintage</option>
+                                <option value="commander">Commander</option>
+                                <option value="oathbreaker">Oathbreaker</option>
+                            </select>
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <label class="text-sm text-gray-200">Rarity</label>
+                            <select name="rarity" class="w-40 px-3 py-2 rounded bg-gray-800 text-gray-200">
+                                <option value="common">Common</option>
+                                <option value="uncommon">Uncommon</option>
+                                <option value="rare">Rare</option>
+                                <option value="mythic">Mythic Rare</option>
+                            </select>
+                        </div>
+
+                        <!-- add more inline filter blocks as needed -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cards -->
+        <section class="flex flex-wrap justify-center w-full">
+
+            <!-- Card 1 -->
+            <div class="p-2 card">
+                <div class="relative group w-60 h-[360px] overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.02] cursor-pointer">
+                    <!-- per-card checkbox (peer) -->
+                    <input id="show-1" type="checkbox" class="hidden peer" />
+
+                    <img src="../src/img/Chocobo.jpg" alt="" class="w-full h-full object-cover">
+
+                    <!-- overlay: hover (desktop) OR peer-checked (mobile/tap) -->
+                    <div
+                        class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto peer-checked:opacity-100 peer-checked:pointer-events-auto">
+                        <div class="relative z-30 flex gap-3">
+                            <label for="modal" class="action bg-white/10 text-white px-3 py-2 rounded-md text-sm font-semibold backdrop-blur-sm hover:bg-white/20 cursor-pointer">+ Add to Deck</label>
+                            <button class="action bg-white/10 text-white px-3 py-2 rounded-md text-sm font-semibold backdrop-blur-sm hover:bg-white/20">☆ Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="p-2 card">
+                <div class="relative group w-60 h-[360px] overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.02] cursor-pointer">
+                    <input id="show-2" type="checkbox" class="hidden peer" />
+                    <img src="../src/img/Nicol.jpg" alt="" class="w-full h-full object-cover">
+                    <div
+                        class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto peer-checked:opacity-100 peer-checked:pointer-events-auto">
+                        <div class="relative z-30 flex gap-3">
+                            <label for="modal" class="action bg-white/10 text-white px-3 py-2 rounded-md text-sm font-semibold backdrop-blur-sm hover:bg-white/20 cursor-pointer">+ Add to Deck</label>
+                            <button class="action bg-white/10 text-white px-3 py-2 rounded-md text-sm font-semibold backdrop-blur-sm hover:bg-white/20">☆ Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="p-2 card">
+                <div class="relative group w-60 h-[360px] overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.02] cursor-pointer">
+                    <input id="show-3" type="checkbox" class="hidden peer" />
+                    <img src="../src/img/Niv.jpg" alt="" class="w-full h-full object-cover">
+                    <div
+                        class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto peer-checked:opacity-100 peer-checked:pointer-events-auto">
+                        <div class="relative z-30 flex gap-3">
+                            <label for="modal" class="action bg-white/10 text-white px-3 py-2 rounded-md text-sm font-semibold backdrop-blur-sm hover:bg-white/20 cursor-pointer">+ Add to Deck</label>
+                            <button class="action bg-white/10 text-white px-3 py-2 rounded-md text-sm font-semibold backdrop-blur-sm hover:bg-white/20">☆ Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="p-2 card">
+                <div class="relative group w-60 h-[360px] overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.02] cursor-pointer">
+                    <input id="show-4" type="checkbox" class="hidden peer" />
+                    <img src="../src/img/Progenitus.jpg" alt="" class="w-full h-full object-cover">
+                    <div
+                        class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto peer-checked:opacity-100 peer-checked:pointer-events-auto">
+                        <div class="relative z-30 flex gap-3">
+                            <label for="modal" class="action bg-white/10 text-white px-3 py-2 rounded-md text-sm font-semibold backdrop-blur-sm hover:bg-white/20 cursor-pointer">+ Add to Deck</label>
+                            <button class="action bg-white/10 text-white px-3 py-2 rounded-md text-sm font-semibold backdrop-blur-sm hover:bg-white/20">☆ Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="p-2 card">
+                <div class="relative group w-60 h-[360px] overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.02] cursor-pointer">
+                    <input id="show-5" type="checkbox" class="hidden peer" />
+                    <img src="../src/img/Tiamat.jpg" alt="" class="w-full h-full object-cover">
+                    <div
+                        class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto peer-checked:opacity-100 peer-checked:pointer-events-auto">
+                        <div class="relative z-30 flex gap-3">
+                            <label for="modal" class="action bg-white/10 text-white px-3 py-2 rounded-md text-sm font-semibold backdrop-blur-sm hover:bg-white/20 cursor-pointer">+ Add to Deck</label>
+                            <button class="action bg-white/10 text-white px-3 py-2 rounded-md text-sm font-semibold backdrop-blur-sm hover:bg-white/20">☆ Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="p-2 card">
+                <div class="relative group w-60 h-[360px] overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.02] cursor-pointer">
+                    <input id="show-6" type="checkbox" class="hidden peer" />
+                    <img src="../src/img/Wurmcoil.jpg" alt="" class="w-full h-full object-cover">
+                    <div
+                        class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto peer-checked:opacity-100 peer-checked:pointer-events-auto">
+                        <div class="relative z-30 flex gap-3">
+                            <label for="modal" class="action bg-white/10 text-white px-3 py-2 rounded-md text-sm font-semibold backdrop-blur-sm hover:bg-white/20 cursor-pointer">+ Add to Deck</label>
+                            <button class="action bg-white/10 text-white px-3 py-2 rounded-md text-sm font-semibold backdrop-blur-sm hover:bg-white/20">☆ Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="p-2 card">
+                <div class="relative group w-60 h-[360px] overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.02] cursor-pointer">
+                    <input id="show-7" type="checkbox" class="hidden peer" />
+                    <img src="../src/img/Zoetic.jpg" alt="" class="w-full h-full object-cover">
+                    <div
+                        class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto peer-checked:opacity-100 peer-checked:pointer-events-auto">
+                        <div class="relative z-30 flex gap-3">
+                            <label for="modal" class="action bg-white/10 text-white px-3 py-2 rounded-md text-sm font-semibold backdrop-blur-sm hover:bg-white/20 cursor-pointer">+ Add to Deck</label>
+                            <button class="action bg-white/10 text-white px-3 py-2 rounded-md text-sm font-semibold backdrop-blur-sm hover:bg-white/20">☆ Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 8 -->
+            <div class="p-2 card">
+                <div class="relative group w-60 h-[360px] overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.02] cursor-pointer">
+                    <input id="show-8" type="checkbox" class="hidden peer" />
+                    <img src="../src/img/Forest.jpg" alt="" class="w-full h-full object-cover">
+                    <div
+                        class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto peer-checked:opacity-100 peer-checked:pointer-events-auto">
+                        <div class="relative z-30 flex gap-3">
+                            <label for="modal" class="action bg-white/10 text-white px-3 py-2 rounded-md text-sm font-semibold backdrop-blur-sm hover:bg-white/20 cursor-pointer">+ Add to Deck</label>
+                            <button class="action bg-white/10 text-white px-3 py-2 rounded-md text-sm font-semibold backdrop-blur-sm hover:bg-white/20">☆ Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shared modal input + modal (unchanged) -->
+            <input id="modal" type="checkbox" class="hidden peer" />
+            <div class="fixed inset-0 z-50 hidden peer-checked:flex items-center justify-center bg-black/50 px-4">
+                <div class="bg-gray-800 rounded-lg w-full max-w-md p-4">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-white text-lg font-semibold">Add to deck</h3>
+                        <label for="modal" class="text-gray-400 cursor-pointer px-2 py-1 hover:text-white">✕</label>
+                    </div>
+
+                    <div class="space-y-2 max-h-64 overflow-y-auto">
+                        <!-- example decks -->
+                        <button class="w-full text-left px-3 py-2 rounded bg-gray-700 text-white hover:bg-gray-600">My
+                            Commander Deck</button>
+                        <button
+                            class="w-full text-left px-3 py-2 rounded bg-gray-700 text-white hover:bg-gray-600">Budget
+                            Mono-Red</button>
+                        <button
+                            class="w-full text-left px-3 py-2 rounded bg-gray-700 text-white hover:bg-gray-600">Draft
+                            Pool</button>
+                        <button
+                            class="w-full text-left px-3 py-2 rounded bg-gray-700 text-white hover:bg-gray-600">Cube</button>
+                        <button class="w-full text-left px-3 py-2 rounded bg-gray-700 text-white hover:bg-gray-600">Side
+                            Projects</button>
+                    </div>
+
+                    <div class="mt-4 flex justify-end">
+                        <label for="modal"
+                            class="px-4 py-2 bg-gray-700 text-white rounded cursor-pointer hover:bg-gray-600">Close</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- script to allow clicking anywhere on card to toggle overlay, but ignore clicks on action elements -->
+        <script>
+            (function(){
+                const cards = document.querySelectorAll('.card');
+                const sharedModal = document.getElementById('modal');
+
+                function closeAllCards() {
+                    document.querySelectorAll('.card input[type="checkbox"]').forEach(cb => cb.checked = false);
+                }
+
+                // card click: toggle this card, close others; ignore action clicks
+                cards.forEach(card => {
+                    const checkbox = card.querySelector('input[type="checkbox"]');
+                    if (!checkbox) return;
+
+                    card.addEventListener('click', (e) => {
+                        if (e.target.closest('.action')) return; // don't toggle when clicking actions
+                        const was = checkbox.checked;
+                        closeAllCards();
+                        checkbox.checked = !was;
+                        e.stopPropagation();
+                    });
+                });
+
+                // clicking outside any card closes overlays (but ignore clicks inside the modal)
+                document.addEventListener('click', (e) => {
+                    if (!e.target.closest('.card') && !e.target.closest('#modal')) {
+                        closeAllCards();
+                    }
+                });
+
+                // when shared modal opens, close any open card overlays
+                if (sharedModal) {
+                    sharedModal.addEventListener('change', () => {
+                        if (sharedModal.checked) closeAllCards();
+                    });
+                }
+
+                // optional: ESC closes overlays
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') closeAllCards();
+                });
+            })();
+        </script>
+    </main>
+</body>
+
+</html>
