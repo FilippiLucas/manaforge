@@ -12,7 +12,7 @@
 <body>
 
     <main class="main-container">
-        <form class="login-form">
+        <form class="login-form" id="loginForm" action="./index.html">
             <div class="logo-container">
                 <img src="https://res.cloudinary.com/dqnrpauzk/image/upload/v1763919969/logo_ljidep.png" alt="Logo"
                     width="125">
@@ -21,8 +21,9 @@
             </div>
 
             <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" placeholder="Provide your username" id="username" name="username" required>
+                <label for="email">Email</label>
+                <input type="text" placeholder="Provide your email" id="email" name="email" required>
+                <p id="error" style="color:red; margin-top:4px;"></p>
             </div>
 
             <div class="form-group">
@@ -35,5 +36,48 @@
     </main>
 
 </body>
+
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}$/;
+
+        $('#loginForm').on('submit', function (e) {
+            e.preventDefault();
+
+            const email = $('#email').val().trim();
+            const password = $('#password').val().trim();
+
+            if (!emailRegex.test(email)) {
+                $('#error').text('Invalid email address');
+                $('#email').focus();
+                return;
+            }
+
+            if (password.length === 0) {
+                $('#error').text('Password cannot be empty');
+                $('#password').focus();
+                return;
+            }
+            $('#error').text('');
+            window.location.href = './index.html';
+        });
+        
+        $('#email').on('input', function () {
+            const email = $(this).val().trim();
+            if (!emailRegex.test(email)) {
+                $(this).css('border-color', 'red');
+                $('#error').text('Invalid email address');
+            } else {
+                $(this).css('border-color', '');
+                $('#error').text('');
+            }
+        });
+    });
+
+
+</script>
 
 </html>

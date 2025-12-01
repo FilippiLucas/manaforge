@@ -1,0 +1,137 @@
+{
+  "cards": [
+    {
+      "id": 1,
+      "name": "Nicol Bolas, Dragon-God",
+      "rarity": "Mythic Rare",
+      "type": "Legendary Planeswalker",
+      "color": "Blue, Black, Red",
+      "formats": [
+        "Standard",
+        "Historic",
+        "Pioneer",
+        "Modern",
+        "Legacy",
+        "Vintage",
+        "Commander"
+      ],
+      "img_url": "https://res.cloudinary.com/dqnrpauzk/image/upload/v1763919969/Nicol_zwdpbu.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Chocobo Camp",
+      "rarity": "Rare",
+      "type": "Land",
+      "color": "Colorless",
+      "formats": [
+        "Standard",
+        "Historic",
+        "Pioneer",
+        "Modern",
+        "Legacy",
+        "Vintage",
+        "Commander"
+      ],
+      "img_url": "https://res.cloudinary.com/dqnrpauzk/image/upload/v1763919969/Chocobo_gzexxc.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Niv-Mizzet, Supreme",
+      "rarity": "Mythic Rare",
+      "type": "Legendary Creature",
+      "color": "Blue, White, Black, Red, Green",
+      "formats": [
+        "Standard",
+        "Historic",
+        "Pioneer",
+        "Modern",
+        "Legacy",
+        "Vintage",
+        "Commander"
+      ],
+      "img_url": "https://res.cloudinary.com/dqnrpauzk/image/upload/v1763919969/Niv_bygnih.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Progenitus",
+      "rarity": "Mythic Rare",
+      "type": "Legendary Creature",
+      "color": "Blue, White, Black, Red, Green",
+      "formats": [
+        "Standard",
+        "Historic",
+        "Pioneer",
+        "Modern",
+        "Legacy",
+        "Vintage",
+        "Commander"
+      ],
+      "img_url": "https://res.cloudinary.com/dqnrpauzk/image/upload/v1763919968/Progenitus_t8wmkc.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Tiamat",
+      "rarity": "Mythic Rare",
+      "type": "Legendary Creature",
+      "color": "Blue, Green, Red, White, Black",
+      "formats": [
+        "Standard",
+        "Historic",
+        "Pioneer",
+        "Modern",
+        "Legacy",
+        "Vintage",
+        "Commander"
+      ],
+      "img_url": "https://res.cloudinary.com/dqnrpauzk/image/upload/v1763919968/Tiamat_bpoo8u.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Zoetic Cavern",
+      "rarity": "Uncommon",
+      "type": "Land",
+      "color": "Colorless",
+      "formats": [
+        "Modern",
+        "Legacy",
+        "Vintage",
+        "Commander"
+      ],
+      "img_url": "https://res.cloudinary.com/dqnrpauzk/image/upload/v1763919968/Zoetic_b2uh2o.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Wurmcoil Engine",
+      "rarity": "Mythic Rare",
+      "type": "Legendary Creature",
+      "color": "Colorless",
+      "formats": [
+        "Modern",
+        "Legacy",
+        "Vintage",
+        "Commander"
+      ],
+      "img_url": "https://res.cloudinary.com/dqnrpauzk/image/upload/v1763919968/Wurmcoil_zcflid.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Deep Forest Hermit",
+      "rarity": "Rare",
+      "type": "Creature",
+      "color": "Green",
+      "formats": [
+        "Modern",
+        "Legacy",
+        "Vintage",
+        "Commander"
+      ],
+      "img_url": "https://res.cloudinary.com/dqnrpauzk/image/upload/v1763919969/Forest_ptgcci.jpg"
+    }
+  ],
+  "favorites": [
+    {
+      "id": "9853",
+      "card_id": 1
+    }
+  ]
+}

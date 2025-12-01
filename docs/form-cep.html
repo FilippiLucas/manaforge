@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - ManaForge</title>
+
+    <link href="./styles/tailwind.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-900 ">
+
+    <nav class="bg-gray-800">
+        <div class="max-w-6xl mx-auto px-4">
+            <input id="nav-toggle" type="checkbox" class="hidden peer" />
+
+            <div class="flex items-center justify-between h-[70px]">
+                <!-- logo -->
+                <div class="flex items-center space-x-2">
+                    <img src="https://res.cloudinary.com/dqnrpauzk/image/upload/v1763919969/logo_ljidep.png" width="50"
+                        alt="logo">
+                </div>
+
+                <!-- desktop links -->
+                <ul class="hidden md:flex space-x-4 text-gray-200 font-semibold">
+                    <li><a href="index.html" class="hover:text-white">Home</a></li>
+                    <li><a href="cards.html" class="hover:text-white">Cards</a></li>
+                    <li><a href="decks.html" class="hover:text-white">Decks</a></li>
+                </ul>
+
+                <!-- desktop auth -->
+                <div class="hidden md:flex">
+                    <a href="login.html" class="text-gray-200 font-semibold hover:text-white">Login</a>
+                </div>
+
+                <!-- mobile hamburger -->
+                <label for="nav-toggle" class="md:hidden p-2 rounded-md text-gray-200 hover:bg-gray-700 cursor-pointer">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"
+                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </label>
+            </div>
+
+            <div class="hidden peer-checked:flex md:hidden flex-col gap-2 py-2">
+                <a href="index.html" class="px-3 py-2 text-gray-200 hover:bg-gray-700 rounded">Home</a>
+                <a href="cards.html" class="px-3 py-2 text-gray-200 hover:bg-gray-700 rounded">Cards</a>
+                <a href="decks.html" class="px-3 py-2 text-gray-200 hover:bg-gray-700 rounded">Decks</a>
+                <a href="login.html" class="px-3 py-2 text-gray-200 hover:bg-gray-700 rounded">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="w-7/8 mx-auto h-full flex flex-col mt-5">
+
+        <!-- CEP Form -->
+        <section class="w-full max-w-md mx-auto p-4 bg-gray-800 rounded-md shadow-md text-gray-200 mb-8">
+            <h2 class="text-xl font-semibold mb-4">Lookup Address by CEP</h2>
+
+            <form id="cepForm" class="flex flex-col gap-3">
+                <input type="text" id="cepInput" placeholder="Enter CEP (e.g., 01001-000)"
+                    class="p-2 rounded text-white border" required>
+
+                <button type="submit" class="p-2 bg-blue-600 hover:bg-blue-500 rounded font-semibold">
+                    Search
+                </button>
+
+                <p id="cepError" class="text-red-400"></p>
+            </form>
+
+            <div id="cepResult" class="mt-4 p-3 bg-gray-700 rounded hidden">
+                <p><strong>Street:</strong> <span id="logradouro"></span></p>
+                <p><strong>Neighborhood:</strong> <span id="bairro"></span></p>
+                <p><strong>City:</strong> <span id="localidade"></span></p>
+                <p><strong>State:</strong> <span id="uf"></span></p>
+            </div>
+        </section>
+    </main>
+</body>
+
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+<script>
+
+$(document).ready(function(){
+  $('#cepInput').mask('00.000-000');
+});
+
+$(document).ready(function() {
+    $('#cepForm').on('submit', async function(e) {
+        e.preventDefault();
+
+        const cep = $('#cepInput').val().replace(/\D/g, ''); // remove non-digits
+        const errorEl = $('#cepError');
+        const resultEl = $('#cepResult');
+
+        errorEl.text('');
+        resultEl.hide();
+
+        if (cep.length !== 8) {
+            errorEl.text('Please enter a valid 8-digit CEP.');
+            return;
+        }
+
+        try {
+            const response = await $.getJSON(`https://viacep.com.br/ws/${cep}/json/`);
+
+            if (response.erro) {
+                errorEl.text('CEP not found.');
+                return;
+            }
+
+            $('#logradouro').text(response.logradouro);
+            $('#bairro').text(response.bairro);
+            $('#localidade').text(response.localidade);
+            $('#uf').text(response.uf);
+
+            resultEl.show();
+        } catch (err) {
+            console.error(err);
+            errorEl.text('Error fetching CEP data.');
+        }
+    });
+});
+</script>
+
+</html>

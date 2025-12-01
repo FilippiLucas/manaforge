@@ -16,123 +16,77 @@
     </nav>
 
     <main class="max-w-4xl mx-auto mt-6 p-4">
-        <header class="mb-6">
-            <h1 id="deck-title" class="text-2xl font-bold">Deck</h1>
+        <header class="mb-6 flex items-center justify-between">
+            <h1 id="deck-title" class="text-2xl font-bold"></h1>
+
+            <button id="delete-deck-btn" class="px-3 py-2 text-sm bg-red-600 hover:bg-red-500 rounded cursor-pointer">
+                Delete Deck
+            </button>
         </header>
+
 
         <section>
             <ul id="card-list" class="space-y-2">
-
-                <li class="group relative bg-gray-800 rounded p-3 flex items-center justify-between"
-                    data-img="https://res.cloudinary.com/dqnrpauzk/image/upload/v1763919969/Niv_bygnih.jpg">
-                    <span class="text-sm preview-trigger">Niv-Mizzet, Supreme</span>
-                    <div class="flex items-center gap-2">
-                        <button class="remove-btn px-2 py-1 text-xs bg-red-600 rounded hover:bg-red-500">Remove</button>
-                    </div>
-                </li>
-
-                <li class="group relative bg-gray-800 rounded p-3 flex items-center justify-between"
-                    data-img="https://res.cloudinary.com/dqnrpauzk/image/upload/v1763919969/Nicol_zwdpbu.jpg">
-                    <span class="text-sm preview-trigger">Nicol Bolas</span>
-                    <div class="flex items-center gap-2">
-                        <button class="remove-btn px-2 py-1 text-xs bg-red-600 rounded hover:bg-red-500">Remove</button>
-                    </div>
-                </li>
-
+                <!-- JS will render cards here -->
             </ul>
         </section>
     </main>
 
-    <!-- Centered preview modal (used for hover-preview and mobile tap) -->
+    <!-- Hover/tap preview modal -->
     <div id="card-preview" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 p-4">
-        <div class="relative max-w-[90vw] max-h-[90vh] w-full flex items-center justify-center">
-            <img id="card-preview-img" src="" alt="card preview"
-                class="max-w-full max-h-[80vh] object-contain rounded shadow-lg" />
-            <button id="card-preview-close"
-                class="absolute top-2 right-2 bg-black/50 text-white rounded px-2 py-1">✕</button>
+        <div class="relative">
+            <img id="card-preview-img" class="max-h-[90vh] max-w-[90vw] object-contain rounded shadow-xl" />
+            <button id="card-preview-close" class="absolute top-2 right-2 bg-black/70 text-white rounded px-2 py-1">
+                ✕
+            </button>
         </div>
     </div>
 
-    <script>
-        (function () {
-            // set deck title from querystring
-            const params = new URLSearchParams(location.search);
-            const name = params.get('name') || 'Untitled Deck';
-            document.getElementById('deck-title').textContent = decodeURIComponent(name);
+    <!-- REMOVE CONFIRM MODAL -->
+    <div id="remove-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center z-50">
+        <div class="bg-gray-800 text-gray-100 p-6 rounded-xl w-80 shadow-2xl">
+            <h2 class="text-lg font-semibold mb-4 text-gray-100">
+                Remove card from deck?
+            </h2>
 
-            const previewOverlay = document.getElementById('card-preview');
-            const previewImg = document.getElementById('card-preview-img');
-            const previewClose = document.getElementById('card-preview-close');
+            <p class="text-sm text-gray-300 mb-6">
+                This action will remove the card entirely from the deck.
+            </p>
 
-            function showPreview(src) {
-                if (!src) return;
-                previewImg.src = src;
-                previewOverlay.classList.remove('hidden');
-            }
+            <div class="flex flex-row gap-3 w-full">
+                <button id="cancel-remove"
+                    class="bg-gray-700 hover:bg-gray-600 text-gray-100 py-2 rounded-lg transition w-full cursor-pointer">
+                    Cancel
+                </button>
+                <button id="confirm-remove"
+                    class="bg-red-600 hover:bg-red-500 text-white py-2 rounded-lg transition w-full cursor-pointer">
+                    Yes, remove
+                </button>
+            </div>
+        </div>
+    </div>
 
-            function hidePreview(force = false) {
-                previewImg.src = '';
-                previewOverlay.classList.add('hidden');
-            }
+    <!-- DELETE DECK MODAL -->
+    <div id="delete-deck-modal" class="fixed inset-0 hidden items-center justify-center bg-black/70 z-50">
+        <div class="bg-gray-800 p-6 rounded shadow-xl max-w-sm w-auto text-center">
+            <h2 class="text-lg font-semibold mb-3">Delete this deck?</h2>
+            <p class="text-gray-300 mb-6">This action cannot be undone.</p>
 
-            // close handlers
-            previewOverlay.addEventListener('click', (e) => {
-                if (e.target === previewOverlay || e.target === previewClose) {
-                    hidePreview(true);
-                }
-            });
-            previewClose.addEventListener('click', () => hidePreview(true));
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') hidePreview(true);
-            });
+            <div class="flex gap-3 justify-center">
+                <button id="cancel-delete-deck" class="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded w-full cursor-pointer">
+                    Cancel
+                </button>
 
-            // remove button behavior
-            document.getElementById('card-list').addEventListener('click', (e) => {
-                const btn = e.target.closest('.remove-btn');
-                if (btn) {
-                    const li = btn.closest('li');
-                    if (!li) return;
-                    e.stopPropagation();
-                    if (!confirm('Remove this card from the deck?')) return;
-                    li.remove();
-                    return;
-                }
-            });
+                <button id="confirm-delete-deck" class="px-4 py-2 bg-red-600 hover:bg-red-500 rounded w-full cursor-pointer">
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
 
-            // Click-to-preview (desktop + mobile). Toggle when clicking same name; swap when clicking a different name.
-            document.querySelectorAll('#card-list > li').forEach(li => {
-                const src = li.getAttribute('data-img');
-                const trigger = li.querySelector('.preview-trigger');
 
-                if (trigger) {
-                    trigger.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        // if preview is open and showing the same src, close it (toggle)
-                        const currentlyOpen = !previewOverlay.classList.contains('hidden');
-                        const sameImage = currentlyOpen && previewImg.src && previewImg.src.includes(src);
-                        if (sameImage) {
-                            hidePreview(true);
-                        } else {
-                            showPreview(src);
-                        }
-                    });
-                }
-
-                // prevent other li clicks from opening preview and ignore remove-btn clicks
-                li.addEventListener('click', (e) => {
-                    if (e.target.closest('.remove-btn')) return;
-                });
-            });
-
-            // clicking outside list hides preview
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('#card-list') && !e.target.closest('#card-preview')) {
-                    hidePreview(true);
-                }
-            });
-
-        })();
-    </script>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="module" src="./js/deck-cards.js"></script>
 </body>
 
 </html>
