@@ -17,7 +17,7 @@ O frontend da aplicação foi desenvolvido com HTML, CSS e JavaScript,
 **TailwindCSS**
 
 ## Dependências JavaScript
-...
+**JQuery & JQuery-mask-plugin**
 
 ## Checklist | Indicadores de Desempenho (ID) dos Resultados de Aprendizagem (RA)
 
@@ -57,5 +57,11 @@ O frontend da aplicação foi desenvolvido com HTML, CSS e JavaScript,
 - [x] ID 24 - Requisições assíncronas para APIs públicas reais (OpenWeather, ViaCEP etc.), exibindo os dados e tratando erros.
 - [x] ID 25 - Realiza requisições assíncronas para uma API fake utilizando adequadamente conceitos como AJAX, Fetch API ou bibliotecas, para persistir os dados originados de um formulário.
 - [x] ID 26 - Realiza requisições assíncronas para uma API fake utilizando adequadamente conceitos como AJAX, Fetch API ou bibliotecas, para exibição dos dados na página web.
+
+## Como executar
+
+- npm install
+- npx tailwindcss -i ./src/styles/tailwind.css -o ./docs/styles/tailwind.css --watch
+- npx json-server --watch db.json --port 3000
 
 
