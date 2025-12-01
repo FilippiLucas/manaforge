@@ -11,7 +11,7 @@ O frontend da aplicação foi desenvolvido com HTML, CSS e JavaScript,
 ...
 
 ## Site em Produção - GitHub Pages
-...
+[...](https://filippilucas.github.io/manaforge/)
 
 ## Framework CSS
 **TailwindCSS**

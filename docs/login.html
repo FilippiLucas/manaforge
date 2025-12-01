@@ -28,7 +28,8 @@
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" placeholder="Provide your password" id="password" name="password" required>
+                <input type="password" placeholder="Provide your password" id="password" name="password" required
+                    minlength="8" maxlength="32">
             </div>
 
             <button type="submit" class="login-button">Login</button>
@@ -63,7 +64,7 @@
             $('#error').text('');
             window.location.href = './index.html';
         });
-        
+
         $('#email').on('input', function () {
             const email = $(this).val().trim();
             if (!emailRegex.test(email)) {
