@@ -1,3 +1,5 @@
+const $ = window.$;
+
 import { attachModalFunctionality } from './modal.js';
 import { getDecks, addCardToDeck } from './decks_storage.js';
 

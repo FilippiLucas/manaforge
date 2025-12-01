@@ -1,3 +1,5 @@
+const $ = window.$;
+
 const KEY = 'manaforge_decks';
 
 // Get decks

@@ -1,3 +1,5 @@
+const $ = window.$;
+
 import { 
     getDeckById, 
     removeCardFromDeck, 

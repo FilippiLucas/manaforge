@@ -1,3 +1,5 @@
+const $ = window.$;
+
 import { getDecks, createDeck } from './decks_storage.js';
 
 const GRID_ID = '#decks-grid';

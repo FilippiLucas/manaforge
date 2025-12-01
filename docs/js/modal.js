@@ -1,3 +1,5 @@
+const $ = window.$;
+
 // Function to attach modal functionality
 export function attachModalFunctionality() {
     const $modal = $('#modal');
